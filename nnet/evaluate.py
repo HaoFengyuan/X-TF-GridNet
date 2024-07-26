@@ -67,9 +67,6 @@ def run(args):
             snr = si_snr(sep, ref)
             lines.append(' '.join((key, str(snr), '\n')))
             reporter.add(key, snr)
-
-        # with open('snr.txt', 'w') as scp_file:
-        #     scp_file.writelines(lines)
     else:
         sep_reader = SpeakersReader(args.sep_scp)
         ref_reader = SpeakersReader(args.ref_scp)
