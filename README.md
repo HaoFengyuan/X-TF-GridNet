@@ -19,18 +19,18 @@ bash evalute.sh
 
 We choose the PESQ, SDR and SI-SDR results on the WSJ0-2mix dataset for further comparison with other time domain TSE method.
 
-| Method | Year | Domain | Param. (M) | MACs (G/s) | PESQ $\uparrow$ | SDR (dB) $\uparrow$| SI-SDR (dB) $\uparrow$ |
-|:-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Method | Domain | Param. (M) | MACs (G/s) | PESQ $\uparrow$ | SDR (dB) $\uparrow$| SI-SDR (dB) $\uparrow$ |
+|:-|:-:|:-:|:-:|:-:|:-:|:-:|
 | Mixture | - | - | - | - | 2.02 | 0.2 | 0.0 |
-| SpEx | 2020 | T | 10.79 | 3.55 | - | 16.3 | 15.8 |
-| SpEx+ | 2020 | T | 11.14 | 3.76 | 3.43 | 17.2 | 16.9 |
-| X-DPRNN | 2020 | T | 6.32 | 63.92 | - | - | 17.4 |
-| SpEx++ | 2021 | T | 34.08 | 11.88 | 3.53 | 18.4 | 18.0 |
-| SpEx<sub>pc</sub> | 2021 | T | 28.40 | 40.54 | - | 18.8 | 18.6 |
-| VEVEN | 2023 | T | 2.63 | 85.11 | 3.66 | 19.2 | 19.0 |
-| X-SepFormer | 2023 | T | 26.66 | 61.34 | <u>3.74</u> | 19.5 | 18.9 |
-| X-TF-GridNet | 2023 | T-F | 7.79 | 68.32 | 3.70 | <u>20.4</u> | <u>19.7</u> |
-| X-TF-GridNet (Large) | 2023 | T-F | 12.68 | 113.24 | __3.77__ | __21.7__ | __20.7__ |
+| SpEx | T | 10.79 | 3.55 | - | 16.3 | 15.8 |
+| SpEx+ | T | 11.14 | 3.76 | 3.43 | 17.2 | 16.9 |
+| X-DPRNN | T | 6.32 | 63.92 | - | - | 17.4 |
+| SpEx++ | T | 34.08 | 11.88 | 3.53 | 18.4 | 18.0 |
+| SpEx<sub>pc</sub> | T | 28.40 | 40.54 | - | 18.8 | 18.6 |
+| VEVEN | T | 2.63 | 85.11 | 3.66 | 19.2 | 19.0 |
+| X-SepFormer | T | 26.66 | 61.34 | <u>3.74</u> | 19.5 | 18.9 |
+| X-TF-GridNet | T-F | 7.79 | 68.32 | 3.70 | <u>20.4</u> | <u>19.7</u> |
+| X-TF-GridNet (Large) | T-F | 12.68 | 113.24 | __3.77__ | __21.7__ | __20.7__ |
 
 (\* More details can be found in the paper.)
 
