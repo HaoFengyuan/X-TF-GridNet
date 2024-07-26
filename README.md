@@ -1,44 +1,32 @@
 # X-TF-GridNet: A Time-Frequency Domain Target Speaker Extraction Network with Adaptive Speaker Embedding Fusion
-The implementation of "X-TF-GridNet: A Time-Frequency Domain Target Speaker Extraction Network with Adaptive Speaker Embedding Fusion", which is submitted to Information Fusion.
 
-# End-to-End Neural Speaker Diarization with an Iterative Adaptive Attractor Estimation
+This project relates to the implementation of X-TF-GridNet, a Target Speaker Extraction Network (TSE) in the time-frequency (T-F) domain, which has been accepted by *Information Fusion*. Our proposed method boasts two key extensions: a U<sup>2</sup>-Net style network adeptly extracts robust fixed speaker embeddings, and an adaptive embedding fusion (AEA) mechanism ensures the effective utilization of target speaker information.
 
-This project relates to the implementation of EEND-IAAE, which has been accepted by Neural Networks. There exist two main parts in the proposed IAAE network: an attention-based pooling is designed to obtain a rough estimation of the attractors based on the diarization results of the previous iteration, and an adaptive attractor is then calculated by using transformer decoder blocks.
-
-In this project, the primary basis is the original Chainer implementation of [EEND](https://github.com/hitachi-speech/EEND) and the PyTorch implementation [EEND-Pytorch](https://github.com/Xflick/EEND_PyTorch).
-
-Notably, the project only encompasses the inference phase. For specifics on data preparation, please refer to [there](https://github.com/hitachi-speech/EEND/blob/master/egs/callhome/v1/run_prepare_shared.sh). For details regarding the training phase, please refer to the [there](https://github.com/Xflick/EEND_PyTorch/blob/master/run.sh).
-
-## Pretrained Models
-We provide the pretrained SA-EEND trained on simulated data and real datasets respectively.
-
-`exp/simu_EEND.th` was trained on Sim2spk with $\beta = 2$, and `exp/real_EEND.th` was adapted on the CALLHOME adaptation set. In the training phase, we basically followed the training protocol described in [the original paper](https://arxiv.org/abs/2003.02966).
-
-Building upon these pretrained models, we can proceed to train the proposed EEND-IAAE.
+In this project, the primary basis is the original implementation of [SpEx+](https://github.com/gemengtju/SpEx_Plus) and the implementation of [EEND-Pytorch](https://github.com/espnet/espnet/blob/master/espnet2/enh/separator/tfgridnet_separator.py). Notably, the project only encompasses the traing and inference phase. For specifics on data preparation, please refer to [there](https://github.com/xuchenglin28/speaker_extraction_SpEx). 
 
 ## Results
 
-We choose the DER results at the 2nd iteration step for further comparison with other different variants of the EEND.
+We choose the PESQ, SDR and SI-SDR results on the WSJ0-2mix dataset for further comparison with other time domain TSE method.
 
-| Method |  <br> $\beta = 2$ | Sim2spk <br> $\beta = 3$ |  <br> $\beta = 5$ | CALLHOME |
-|:-|:-:|:-:|:-:|:-:|
-| __Clustering-based__ |
-| &emsp; i-vector + AHC | 33.74 | 30.93 | 25.96 | 12.10 |
-| &emsp; x-vector (TDNN) + AHC | 28.77 | 24.46 | 19.78 | 11.53 |
-| __EEND-based__ |
-| &emsp; BLSTM-EEND | 12.28 | 14.36 | 19.69 | 26.03 |
-| &emsp; SA-EEND | 4.56 | 4.50 | 3.85 | 9.54 |
-| &emsp; CB-EEND | 2.85 | N/A | N/A | 9.70 |
-| &emsp; RX-EEND | 4.18 | 3.93 | 4.01 | 9.17 |
-| &emsp; EEND-NAA | 2.97 | 2.77 | 3.39 | 7.83 |
-| &emsp; AL-EEND | 4.29 | 4.11 | 4.15 | 8.67 |
-| &emsp; EEND-IAAE, $(i=2)$ | __2.83__ | __2.57__ | __3.23__ | __7.58__ |
+| Method | Year | Domain | Causal | Param. (M) | MACs (G/s) | PESQ $\uparrow$ | SDR (dB) $\uparrow$| SI-SDR (dB) $\uparrow$ |
+|:-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Mixture | - | - | - | - | - | 2.02 | 0.2 | 0.0 |
+| SpEx | 2020 | T | &#10008; | 10.79 | 3.55 | - | 16.3 | 15.8 |
+| SpEx+ | 2020 | T | &#10008; | 11.14 | 3.76 | 3.43 | 17.2 | 16.9 |
+| X-DPRNN | 2020 | T | &#10008; | 6.32 | 63.92 | - | - | 17.4 |
+| SpEx++ | 2021 | T | &#10008; | 34.08 | 11.88 | 3.53 | 18.4 | 18.0 |
+| SpEx<sub>pc</sub> | 2021 | T | &#10008; | 28.40 | 40.54 | - | 18.8 | 18.6 |
+| VEVEN | 2023 | T | &#10008; | 2.63 | 85.11 | 3.66 | 19.2 | 19.0 |
+| X-SepFormer | 2023 | T | &#10008; | 26.66 | 61.34 | <u>3.74</u> | 19.5 | 18.9 |
+| X-TF-GridNet | 2023 | T-F | &#10008; | 7.79 | 68.32 | 3.70 | <u>20.4</u> | <u>19.7</u> |
+| X-TF-GridNet (Large) | 2023 | T-F | &#10008; | 12.68 | 113.24 | __3.77__ | __21.7__ | __20.7__ |
 
 (\* More details can be found in the paper.)
 
 
 ## Citation
 If you use our code in your research or wish to refer to the baseline results, please use the following BibTeX entry.
+
 ```bibtex
 @article{hao2024if,
     title = {{X-TF-GridNet}: A time–frequency domain target speaker extraction network with adaptive speaker embedding fusion},
