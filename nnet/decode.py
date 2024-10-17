@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 from libs.audio import WaveReader, write_wav
 from libs.utils import get_logger
-from pTFGridNet_v3 import pTFGridNet
+from pTFGridNet import pTFGridNet
 
 logger = get_logger(__name__)
 
@@ -62,11 +62,7 @@ def get_comSTFT(egs, signal_configs, device):
 
 
 class Decoder(object):
-    def __init__(self,
-                 nnet,
-                 gpuid=(0, ),
-                 cpt_dir=None,
-                 configs=None):
+    def __init__(self, nnet, gpuid=(0, ), cpt_dir=None, configs=None):
         if not torch.cuda.is_available():
             raise RuntimeError("CUDA device unavailable...exist")
         if not isinstance(gpuid, tuple):
@@ -141,13 +137,6 @@ def run(data_type, cpt_dir, config):
 
     for key, mix in tqdm(mix_input, desc='Processing', dynamic_ncols=True, unit_scale=True):
         aux = aux_input[key]
-
-        # aux_len = int(0.5 * configs['signal']['sr'])
-        # win_size = int(configs['signal']['sr'] * configs['signal']['win_size'])
-        # win_shift = int(configs['signal']['sr'] * configs['signal']['win_shift'])
-        # aux = librosa.effects.trim(aux, top_db=30, frame_length=win_size, hop_length=win_shift)[0]
-        # aux = aux[:aux_len]
-        # assert len(aux) == aux_len, "Aux length must be equal to the same length as set!"
 
         mix_std_, aux_std_ = np.std(mix), np.std(aux)
         mix, aux = mix / mix_std_, aux / aux_std_

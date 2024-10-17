@@ -4,6 +4,10 @@ This project relates to the implementation of X-TF-GridNet, a Target Speaker Ext
 
 In this project, the primary basis is the original implementation of [SpEx+](https://github.com/gemengtju/SpEx_Plus) and the implementation of [TF-GridNet](https://github.com/espnet/espnet/blob/master/espnet2/enh/separator/tfgridnet_separator.py). Notably, the project only encompasses the traing and inference phase. For specifics on data preparation, please refer to [there](https://github.com/xuchenglin28/speaker_extraction_SpEx). 
 
+## Pretrain Models
+
+We release the model trained on the WHAMR! dataset, [there](exp).
+
 ## Running Experiments
 
 ```shell

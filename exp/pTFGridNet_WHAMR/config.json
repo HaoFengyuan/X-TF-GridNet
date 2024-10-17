@@ -1,0 +1,72 @@
+{
+    "path": {
+        "num_spks": 101,
+        "resume_filename": "",
+        "train": {
+            "scp_dir": "data/whamr_mr/tr/",
+            "mix_scp": "mix.scp",
+            "ref_scp": "ref.scp",
+            "aux_scp": "aux.scp",
+            "spk_list": "data/wsj0_2mix_extr_tr.spk",
+            "ref_dur": "data/uniq_target_ref_dur.txt"
+        },
+        "val": {
+            "scp_dir": "data/whamr_mr/cv/",
+            "mix_scp": "mix.scp",
+            "ref_scp": "ref.scp",
+            "aux_scp": "aux.scp",
+            "spk_list": "data/wsj0_2mix_extr_tr.spk",
+            "ref_dur": "data/uniq_target_ref_dur.txt"
+        }
+    },
+    "gpu": {
+        "gpu_ids": [
+            2
+        ]
+    },
+    "signal": {
+        "sr": 8000,
+        "chunk_length": 4,
+        "win_size": 0.032,
+        "win_shift": 0.008,
+        "fft_num": 256,
+        "beta": 1.0
+    },
+    "loss_function": {
+        "zero_mean": true,
+        "scale_label": true
+    },
+    "optimizer": {
+        "name": "adam",
+        "lr": 0.001,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "l2": 1e-07,
+        "min_lr": 1e-08,
+        "logging_period": 1000,
+        "factor": 0.5,
+        "gradient_norm": 5.0,
+        "epochs": 150,
+        "halve_freq": 2,
+        "early_stop_freq": 6
+    },
+    "dataloader": {
+        "num_workers": 4,
+        "pin_memory": true,
+        "batch_size": 5
+    },
+    "net": {
+        "n_layers": 3,
+        "lstm_hidden_units": 256,
+        "attn_n_head": 4,
+        "attn_approx_qk_dim": 512,
+        "emb_dim": 64,
+        "emb_ks": 4,
+        "emb_hs": 2,
+        "activation": "prelu",
+        "eps": 1e-05
+    },
+    "save": {
+        "save_filename": "exp/pTFGridNet_3.5"
+    }
+}

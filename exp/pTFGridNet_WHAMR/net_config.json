@@ -1,0 +1,11 @@
+{
+    "n_layers": 3,
+    "lstm_hidden_units": 256,
+    "attn_n_head": 4,
+    "attn_approx_qk_dim": 512,
+    "emb_dim": 64,
+    "emb_ks": 4,
+    "emb_hs": 2,
+    "activation": "prelu",
+    "eps": 1e-05
+}
