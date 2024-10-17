@@ -6,7 +6,7 @@ In this project, the primary basis is the original implementation of [SpEx+](htt
 
 ## Pretrain Models
 
-We release the model trained on the WHAMR! dataset, [there](exp).
+We release the model trained on the WHAMR! dataset, [there](https://github.com/HaoFengyuan/X-TF-GridNet/tree/main/exp).
 
 ## Running Experiments
 
